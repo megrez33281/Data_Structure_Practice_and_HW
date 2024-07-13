@@ -1,0 +1,10 @@
+Queue：
+
+1.用head和tail作為Queue兩端的指標
+  head表示出口
+  tail表示入口
+
+2.tail指向的空間不視為Queue的一部分，將其用來判斷是否為Full(若是(tail+1)%QUEUESIZE == head，表示head正緊貼tail，空間已滿)
+  註：犧牲tail指向之空間判斷Full
+
+3.tail和head都需與QUEUESIZE取餘數確保兩者皆在Queue範圍內

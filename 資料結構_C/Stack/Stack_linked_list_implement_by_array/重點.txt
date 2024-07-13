@@ -1,0 +1,7 @@
+以array實作LinkedList，並做成stack
+重點為創建一個新的dataType稱為Node
+並創建一個Node之陣列nodeList
+陣列之大小為LinkedList總共可取得的空間
+Node中至少包含所連接之下一個node在nodeList中的index及其要包含的資料
+
+注意：由於next是以int的形式呈現，因此在LinkedList中的指標都以Integer的形式呈現

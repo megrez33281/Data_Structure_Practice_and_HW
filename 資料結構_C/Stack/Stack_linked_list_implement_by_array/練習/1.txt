@@ -1,0 +1,118 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define AVAILSIZE 3
+
+struct Node{
+    int data;
+    int next;
+};
+
+struct ListNode{
+    int ptr;
+};
+
+struct Node avail[AVAILSIZE];
+struct ListNode pointer;
+
+void CreateAvail(){
+    for(int i=0; i<AVAILSIZE-1; i++){
+        avail[i].next = i+1;
+    }
+    avail[AVAILSIZE-1].next = -1;
+    pointer.ptr = 0;
+
+}
+
+int getNode(){
+
+    int index = pointer.ptr;
+    if(index != -1){
+        pointer.ptr = avail[index].next;
+        avail[index].next = -1;}
+
+    return index;
+}
+
+void freeNode(int index){
+
+    avail[index].next = pointer.ptr;
+    pointer.ptr = index;
+    avail[index].data = 0;
+}
+
+struct Stack{
+    int top;
+};
+
+struct Stack CreateStack(){
+
+    struct Stack stack;
+    stack.top = -1 ; //一個空的stack
+
+    return stack;
+
+
+};
+
+
+void Push(struct Stack* stack, int n){
+    int index = getNode();
+
+    if(index != -1){
+        avail[index].data = n;
+
+        if(stack->top != -1){
+            avail[index].next = stack->top;//將新的node連接
+        }
+
+        stack->top = index; //top指向頂端
+    }
+    else{
+
+        printf("overflow!\n");
+    }
+};
+
+int Pop(struct Stack* stack){
+
+    if(stack->top == -1){
+        printf("The stack is empty\n");
+        return -1;
+    }
+
+    else{
+        int k = avail[stack->top].data;
+        int index = stack->top;
+        stack->top = avail[stack->top].next;
+        freeNode(index);
+
+        return k;
+    }
+
+}
+
+void PrintStack(struct Stack* stack){
+
+    int index = stack->top;
+    printf("Stack:");
+    while(index != -1){
+        printf("%d ", avail[index].data);
+        index = avail[index].next;
+
+    }
+    printf("\n");
+
+
+}
+int main(){
+    CreateAvail();
+    struct Stack stack = CreateStack();
+    Push(&stack,5);
+    Push(&stack,8);
+    printf("%d\n",Pop(&stack));
+    Push(&stack,9);
+    Push(&stack,10);
+    PrintStack(&stack);
+    return 0;
+}
+

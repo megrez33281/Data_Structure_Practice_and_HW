@@ -1,0 +1,41 @@
+注意：資料須初始化
+注意：值等於n-1時迴圈之設置
+
+建立一個Edge包含：cost、連接邊之兩點
+
+1.讀取matrix後，將所有的邊都存到型別為Edge之array E中
+
+2.將E中的edge依照cost的大小由小到大排列
+
+
+執行Prim
+3.建立一個型別為Edge之array TP用來儲存被Prim選中的邊，建立型別為int的array TV 與 InTheTv，TV用來記錄被Prim選過的點，InTheTV可以查看指定點是否被選過
+
+4.此處設0點為起點，先將0丟入TV中，並將InTheTV[0]設為1
+
+進入回圈
+5.每次從TV中的點與TV外的點之連線中選取最小的cost加入TP中，並將TV外的點加入TV中，在InTheTV處將其狀態設為1
+
+6.在TP中的邊等於n-1或TV外沒有點(要加入TP中的邊，其連接的點出現-1)時停止迴圈
+
+離開迴圈
+
+7.印出Prim minimum cost
+
+執行Kruskal
+
+8.令型別為int之array TK用來記錄E中的edge是否被Kruskal選中
+
+進入迴圈
+
+9.遍歷E中的edge(先前已經排序過)
+
+10.以先前用Prim完成的Edge array TP來檢查是否出現Cycle，若edge不再TP中，表示會形成cycle，反之不會形成cycle
+
+11.若是不會形成cycle，將TK的對應位置設為1
+
+12.在找到的邊等於n-1或所有邊都找過後跳出迴圈
+
+離開迴圈
+
+13.印出Kruskal

@@ -1,0 +1,1 @@
+用LinkedList(array)實作Queue，可以用front = -1 判斷queue為空

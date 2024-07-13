@@ -1,0 +1,16 @@
+解法：
+Infix 轉 prefix 需要由右至左讀取
+創建兩個Stack，一個stack用來存放運算子，另一個store用來存放暫時的output(由右至左讀取會造成答案顛倒)
+由右至左讀取，若讀取到的是運算元，直接將其存入store
+
+註：考慮到若是於stack最底部設立一個最小值得isp，用stack中的運算子之isp與當前運算子之icp比較時容易誤將其讀取，故改用檢測stack不為空後再與icp比較。
+
+若讀取到的是運算子，將該運算子的icp與stack中的isp比較(若stack不為空)
+	若icp < isp 則將pop(&stack)存入store中後，繼續用icp與stack中下一運算子之isp比較(直到不滿足icp < isp 或 stack為空，須注意，若不將stack中運算子存入store，需再將該運算子放回stack中)
+	
+	若不滿足icp < isp 則將當前運算子存入stack中即可
+	註：此為Infix轉prefix與Infix轉postfix不同之處(後者為icp <= isp)
+
+讀取完所有字元後，若是stack不為空，將stack中所有運算子存入store中
+
+最後將store中所有字元依序輸出即可

@@ -1,0 +1,1 @@
+藉由事先在stack中投入型別為Node 的 null作為底部，用以判定stack是否為空

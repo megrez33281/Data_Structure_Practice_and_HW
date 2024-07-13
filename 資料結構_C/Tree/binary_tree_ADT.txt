@@ -1,0 +1,20 @@
+data type：
+含資訊(data)、左子樹、右子樹
+
+1.Create()
+創建一個空的binary_tree
+
+2.IsEmpty()
+判斷一個binary_tree是否為空
+
+3.MakeBT(btl1,items,btl2)
+創建一個binary_tree，其data為item，左子樹為btl1，右子樹為btl2
+
+3.Lchild(bt)
+若bt不是空的binary_tree，返回bt之左子樹
+
+4.Rchild(bt)
+若bt不是空的binary_tree，返回bt之右子樹
+
+5.Data(bt)
+若bt不為空，返回bt之data
